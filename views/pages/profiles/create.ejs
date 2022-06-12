@@ -1,0 +1,44 @@
+<div class="container">
+    <h2 class="title-form py-3">Register Biodata</h2>
+    <form method="post" action="/profiles">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" required>
+      </div>
+      <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" required>
+      </div>
+      <div class="mb-4">
+          <label for="birthOfDate" class="form-label">Tanggal Lahir</label>
+          <input type="date" class="form-control" id="birthOfDate" name="birthOfDate">
+      </div>
+      <div class="mb-4">
+          <label for="phoneNumber" class="form-label">No. Telpon</label>
+          <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
+      </div>
+      <div class="mb-4">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="mb-4">
+          <label for="address" class="form-label">Alamat</label>
+          <input type="text" class="form-control" id="address" name="address" required>
+      </div>
+      <div class="mb-4">
+          <label for="user" class="form-label">User</label>
+          <select class="form-select" aria-label="User" name="userId" required>
+          <option selected disabled value="">-- Silahkan pilih --</option>
+            <% users.forEach((user) => { %>
+              <option value="<%= user.id %>">
+                  <%= user.username %>
+              </option>
+            <% }) %>
+          </select>
+        </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>

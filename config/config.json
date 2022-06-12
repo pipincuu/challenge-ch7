@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "superuser",
+    "database": "challenge_ch7_development",
+    "host": "localhost",
+    "dialect": "postgres",
+    "seederStorage": "sequelize"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "superuser",
+    "database": "challenge_ch7_test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "superuser",
+    "database": "challenge_ch7_production",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
