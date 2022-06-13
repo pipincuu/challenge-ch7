@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require('express-session');
 const flash = require('express-flash');
+const passport = require("./lib/passport");
 const expressLayouts = require("express-ejs-layouts");
 const methodOverride = require('method-override');
 const router = require("./router");
@@ -23,8 +24,8 @@ app.use(session({
 
 app.use(flash())
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Setup Layout
 app.use(expressLayouts);

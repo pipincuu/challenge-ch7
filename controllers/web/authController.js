@@ -1,11 +1,12 @@
 const { Superadmin } = require("../../models");
-const passport = require("../lib/passport");
+const passport = require("../../lib/passport");
+
 
 module.exports = {
     register: async (req, res, next) => {
         try{
         // panggil static method register yg sudah dibuat
-        await User.register(req.body);
+        await Superadmin.register(req.body);
         res.redirect("/login");
         } catch(err) {
             next(err);
@@ -13,13 +14,15 @@ module.exports = {
     },
 
     login: passport.authenticate("local", {
-        successRedirect: "/whoami",
+        successRedirect: "/",
         failureRedirect: "/login",
         failureFlash: true,
     }),
 
-    whoami:(req, res) => {
-        res.render("profile", req.user.dataValues);
-    },
+    // whoami:(req, res) => {
+    //     res.render("pages/admin/profile", req.user.dataValues, {
+    //         title: "Superadmin login"
+    //     });
+    // },
 
 };

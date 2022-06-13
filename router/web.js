@@ -3,6 +3,8 @@ const pagesController = require("../controllers/web/pagesController");
 const usersController = require("../controllers/web/usersController");
 const profilesController = require("../controllers/web/profilesController");
 const adminController = require("../controllers/web/adminController");
+const authController = require("../controllers/web/authController");
+// const restrict = require("../middlewares/restrict");
 
 // router user page
 router.get("/", pagesController.home);
@@ -25,5 +27,12 @@ router.delete("/profiles/:id", profilesController.destroy);
 
 //router super admin
 router.get("/login", adminController.index);
+router.get("/admin", adminController.show);
+router.get("/admin/create", adminController.create);
+router.post("/admin", authController.register);
+router.post("/login", authController.login);
+// router.get("/whoami", restrict, authController.whoami);
+
+
 
 module.exports = router;

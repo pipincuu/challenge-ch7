@@ -1,3 +1,10 @@
+<!-- Code ini akan berjalan bila terjadi error -->
+<% if (messages.error) { %>
+  <h5>
+    <%= messages.error %>
+  </h5>
+<% } %>
+
 <main class="form-signin">
     <form method="POST" action="/login">
       <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
