@@ -13,6 +13,6 @@ router.post('/v1/auth/login', authApi.login);
 router.get('/v1/auth/whoami', restrict, authApi.whoami);
 
 //games
-router.post('/v1/games/create-room', gameApi.createRoom);
+router.post('/v1/games/create-room', restrict, gameApi.createRoom);
 
 module.exports = router;

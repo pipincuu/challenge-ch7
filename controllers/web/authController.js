@@ -14,10 +14,10 @@ module.exports = {
     },
 
     login: passport.authenticate("local", {
-        successRedirect: "/",
-        failureRedirect: "/login",
+        successRedirect: "/home",
+        failureRedirect: "/",
         failureFlash: true,
-    }),
+    })
 
     // whoami:(req, res) => {
     //     res.render("pages/admin/profile", req.user.dataValues, {

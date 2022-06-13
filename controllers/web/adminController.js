@@ -15,3 +15,14 @@ const { Superadmin } = require("../../models");
             superadmin,
         });
     }
+
+    exports.destroy = async (req, res) => {
+        const hapus = await Superadmin.destroy({
+            where: {
+              id: req.params.id,
+            },
+        });
+        res.redirect("/admin");
+    }
+
+

@@ -6,8 +6,11 @@ const adminController = require("../controllers/web/adminController");
 const authController = require("../controllers/web/authController");
 // const restrict = require("../middlewares/restrict");
 
+
+router.get("/", adminController.index);
+router.get("/home", pagesController.home);
+
 // router user page
-router.get("/", pagesController.home);
 router.get("/users", usersController.index);
 router.get("/users/create", usersController.create);
 router.post("/users", usersController.store);
@@ -26,11 +29,12 @@ router.delete("/profiles/:id", profilesController.destroy);
 
 
 //router super admin
-router.get("/login", adminController.index);
 router.get("/admin", adminController.show);
 router.get("/admin/create", adminController.create);
 router.post("/admin", authController.register);
 router.post("/login", authController.login);
+router.delete("/admin/:id", adminController.destroy);
+
 // router.get("/whoami", restrict, authController.whoami);
 
 
