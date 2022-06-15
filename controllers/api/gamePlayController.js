@@ -1,12 +1,8 @@
 const { User } = require("../../models");
-const { Roomgame } = require("../../models");
+const { Roomplay } = require("../../models");
 
 exports.createRoom = (req, res) => {
-    const userid = req.user.id;
-    const userPlayer = User.findOne({
-        where : { id: userid }
-    })
-    const roomPlayer = Roomgame.create({
+    const roomPlayer = Roomplay.create({
           roomName: req.body.roomName,
         })
             .then(roomName => {
@@ -17,9 +13,55 @@ exports.createRoom = (req, res) => {
       }
 
 exports.joinRoom = async (req, res) => {
-    const room = req.body.id; 
-    const roomPlayers = await Roomgame.findOne({
+    const room = req.params.id; 
+    const roomPlayers = await Roomplay.findOne({
         where: { id: room },
       });
 
+      const userId = req.user.id;
+
+      let responseMessage = ""
+      if (!roomPlayers) {
+        responseMessage = "Room tidak ditemukan";
+      } else {
+        responseMessage = "Room berhasil ditemukan";
+        if (roomPlayers.player1 == null) {
+            Roomplay.update({
+                player1: userId
+            },
+            {
+              where: {
+                id: room,
+              },
+            })
+            res.json ({
+                 "message": responseMessage
+              })
+              return true;    
+        } else if (roomPlayers.player2 == null) {
+            Roomplay.update({
+                player2: userId
+            },
+            {
+              where: {
+                id: room,
+              },
+            })
+            res.json ({
+                 "message": responseMessage
+              })
+              return true; 
+        } else { 
+            responseMessage = "Room sudah penuh!";
+            res.json ({
+                 "message": responseMessage
+              })
+              return true;  
+        }
+      };
+
+    //   res.json ({
+    //     "roomPlayers": roomPlayers, 
+    //      "message": responseMessage
+    //   })
 }
