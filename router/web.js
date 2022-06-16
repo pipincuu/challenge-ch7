@@ -4,6 +4,7 @@ const usersController = require("../controllers/web/usersController");
 const profilesController = require("../controllers/web/profilesController");
 const adminController = require("../controllers/web/adminController");
 const authController = require("../controllers/web/authController");
+const historyController = require("../controllers/web/historyController");
 // const restrict = require("../middlewares/restrict");
 
 
@@ -36,6 +37,9 @@ router.post("/login", authController.login);
 router.delete("/admin/:id", adminController.destroy);
 
 // router.get("/whoami", restrict, authController.whoami);
+
+//history
+router.get("/history", historyController.index);
 
 
 

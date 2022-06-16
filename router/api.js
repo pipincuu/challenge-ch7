@@ -15,5 +15,6 @@ router.get('/v1/auth/whoami', restrict, authApi.whoami);
 //games
 router.post('/v1/games/create-room', restrict, gameApi.createRoom);
 router.post('/v1/games/join-room/:id', restrict, gameApi.joinRoom);
+router.post('/v1/games/play-game', restrict, gameApi.playGame);
 
 module.exports = router;

@@ -3,26 +3,27 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Roomplay extends Model {
+  class History extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Roomplay.hasMany(models.History, {
+      History.belongsTo(models.Roomplay, {
         foreignKey: "roomId",
-        as: "History",
-      });
+        as: "Roomplay",
+      })
     }
   }
-  Roomplay.init({
-    roomName: DataTypes.STRING,
-    player1: DataTypes.INTEGER,
-    player2: DataTypes.INTEGER
+  History.init({
+    pilihanPlayer1: DataTypes.STRING,
+    pilihanPlayer2: DataTypes.STRING,
+    winner: DataTypes.INTEGER,
+    roomId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Roomplay',
+    modelName: 'History',
   });
-  return Roomplay;
+  return History;
 };
